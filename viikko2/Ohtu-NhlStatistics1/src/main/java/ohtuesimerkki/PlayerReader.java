@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PlayerReader {
+public class PlayerReader implements Reader{
 
     private Scanner scanner;
 
@@ -18,6 +18,7 @@ public class PlayerReader {
         }
     }
 
+    @Override
     public List<Player> getPlayers() {
         ArrayList<Player> players = new ArrayList<Player>();
 
@@ -32,7 +33,9 @@ public class PlayerReader {
         return players;
     }
 
-    private int extractInt(String str) {
+    @Override
+//    private int extractInt(String str) {
+    public int extractInt(String str) {
         return Integer.parseInt(str.trim());
     }
 }
