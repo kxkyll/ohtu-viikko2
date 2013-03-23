@@ -5,15 +5,31 @@ import ohtu.verkkokauppa.Kirjanpito;
 import ohtu.verkkokauppa.Pankki;
 import ohtu.verkkokauppa.Varasto;
 import ohtu.verkkokauppa.Viitegeneraattori;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+// nämä napattu pois spring-context.xml:stä, niin lähti pelittämään
+//<context:annotation-config />
+//<context:component-scan base-package="ohtu.verkkokauppa" />  
 
 public class Main {
 
     public static void main(String[] args) {
-        Kirjanpito kirjanpito = new Kirjanpito();
-        Varasto varasto = new Varasto(kirjanpito);
-        Pankki pankki = new Pankki(kirjanpito);
-        Viitegeneraattori viitegen = new Viitegeneraattori();
-        Kauppa kauppa = new Kauppa (varasto, pankki, viitegen);
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
+        
+        
+        
+        //Kirjanpito kirjanpito = new Kirjanpito();
+        Kirjanpito kirjanpito = (Kirjanpito) ctx.getBean("kirjanpito");
+        //Varasto varasto = new Varasto(kirjanpito);
+        Varasto varasto = (Varasto) ctx.getBean("varasto");
+      
+        //Pankki pankki = new Pankki(kirjanpito);
+        Pankki pankki = (Pankki) ctx.getBean("pankki");
+        //Viitegeneraattori viitegen = new Viitegeneraattori();
+        Viitegeneraattori viitegen = (Viitegeneraattori) ctx.getBean("viitegeneraattori");
+        //Kauppa kauppa = new Kauppa (varasto, pankki, viitegen);
+        Kauppa kauppa = (Kauppa) ctx.getBean("kauppa");
         
         
         
