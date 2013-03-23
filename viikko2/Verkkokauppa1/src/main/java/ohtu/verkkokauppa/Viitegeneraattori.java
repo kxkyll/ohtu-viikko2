@@ -2,19 +2,20 @@ package ohtu.verkkokauppa;
 
 public class Viitegeneraattori implements ViiteInterface {
 
-    private static Viitegeneraattori instanssi;
-
-    public static Viitegeneraattori getInstance() {
-        if (instanssi == null) {
-            instanssi = new Viitegeneraattori();
-        }
-
-        return instanssi;
-    }
+//    private static Viitegeneraattori instanssi;
+//
+//    public static Viitegeneraattori getInstance() {
+//        if (instanssi == null) {
+//            instanssi = new Viitegeneraattori();
+//        }
+//
+//        return instanssi;
+//    }
     
     private int seuraava;
     
-    private Viitegeneraattori(){
+    //private Viitegeneraattori(){
+    public Viitegeneraattori(){
         seuraava = 1;    
     }
     
